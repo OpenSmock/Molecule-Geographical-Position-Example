@@ -23,7 +23,7 @@ BaselineOfMoleculeGeographicalPositionExample >> baseline: spec [
 						
 			"Packages"
 			spec
-				package: 'Molecule-Geographical-Position-Example' with: [ spec requires: #('Molecule' 'Molecule-Examples' 'Pyramid') ].
+				package: 'Molecule-Geographical-Position-Example' with: [ spec requires: #('Molecule' 'Pyramid') ].
 		 ]
 ]
 
