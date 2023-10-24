@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/OpenSmock/ProjectName.svg)](./LICENSE)
+[![License](https://img.shields.io/github/license/OpenSmock/Molecule-Geographical-Position-Example.svg)](./LICENSE)
 
 # Molecule Geographical Position Example
 
