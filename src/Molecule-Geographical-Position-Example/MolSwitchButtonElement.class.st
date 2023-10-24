@@ -358,16 +358,16 @@ MolSwitchButtonElement >> state: aBoolean [
 	state := aBoolean.
 	aBoolean
 		ifTrue: [
-			(self childNamed: #topFalse) visibility: BlVisibility hidden.
-			(self childNamed: #stickFalse) visibility: BlVisibility hidden.
-			(self childNamed: #topTrue) visibility: BlVisibility visible.
-			(self childNamed: #stickTrue) visibility: BlVisibility visible.
+			(self childWithId: #topFalse) visibility: BlVisibility hidden.
+			(self childWithId: #stickFalse) visibility: BlVisibility hidden.
+			(self childWithId: #topTrue) visibility: BlVisibility visible.
+			(self childWithId: #stickTrue) visibility: BlVisibility visible.
 			self whenOnDo value ]
 		ifFalse: [
-			(self childNamed: #topTrue) visibility: BlVisibility hidden.
-			(self childNamed: #stickTrue) visibility: BlVisibility hidden.
-			(self childNamed: #topFalse) visibility: BlVisibility visible.
-			(self childNamed: #stickFalse) visibility: BlVisibility visible.
+			(self childWithId: #topTrue) visibility: BlVisibility hidden.
+			(self childWithId: #stickTrue) visibility: BlVisibility hidden.
+			(self childWithId: #topFalse) visibility: BlVisibility visible.
+			(self childWithId: #stickFalse) visibility: BlVisibility visible.
 			self whenOffDo value ]
 ]
 

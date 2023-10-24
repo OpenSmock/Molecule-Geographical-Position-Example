@@ -427,9 +427,9 @@ MolGeoPosMapReicever >> initialize [
 
 	super initialize.
 	self buildElements.
-	pointerV := self childNamed: #pointerV.
-	pointerH := self childNamed: #pointerH.
-	pointer := self childNamed: #pointer.
+	pointerV := self childWithId: #pointerV.
+	pointerH := self childWithId: #pointerH.
+	pointer := self childWithId: #pointer.
 	self clipChildren: true.
-	self size: 400 asPoint.
+	self size: 400 asPoint
 ]
