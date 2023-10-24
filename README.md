@@ -1,20 +1,12 @@
 [![License](https://img.shields.io/github/license/OpenSmock/ProjectName.svg)](./LICENSE)
 
-<badges for only one tests script>
-   
-[![Tests](https://github.com/OpenSmock/ProjectName/actions/workflows/Tests.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Tests.yml)
-[![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
-[![Pharo 12](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
+# Molecule Geographical Position Example
 
-<badges for separated tests scripts>
-   
-[![Pharo 11 CI](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo11CI.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo11CI.yml)
-[![Pharo 12 CI](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo12CI.yml/badge.svg)](https://github.com/OpenSmock/ProjectName/actions/workflows/Pharo12CI.yml)
-
-# ProjectName
-Project description here.
+TODO
 
 ## Getting Started
+
+TODO
 
 ### Installation
 
@@ -22,14 +14,14 @@ To install the project on your Pharo image you can just execute the following sc
 
 ```smalltalk
 Metacello new
-   baseline: 'ProjectName';
-   repository: 'github://OpenSmock/ProjectName:main/src';
+   baseline: 'MoleculeGeographicalPositionExample';
+   repository: 'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
    load.
 ```
 
 ## Dependencies
 
-No dependencies.
+TODO
 
 ## License
 
