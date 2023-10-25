@@ -1,11 +1,21 @@
 Class {
 	#name : #MolGeoDownloadedRessource,
 	#superclass : #Object,
-	#instVars : [
-		'downloadDirectory'
-	],
 	#category : #'Molecule-Geographical-Position-Example'
 }
+
+{ #category : #converting }
+MolGeoDownloadedRessource class >> asForm [
+
+	^ (Form fromFileNamed: self new fileReference) mapColor: Color white to: Color transparent
+]
+
+{ #category : #converting }
+MolGeoDownloadedRessource class >> asForm: anExtent [
+
+	^ self asForm
+		  scaledToSize: anExtent
+]
 
 { #category : #'as yet unclassified' }
 MolGeoDownloadedRessource class >> ensureAllDownloaded [
@@ -13,8 +23,18 @@ MolGeoDownloadedRessource class >> ensureAllDownloaded [
 	<script: 'self ensureAllDownloaded'>
 	self allSubclassesDo: [ :each |
 		each new
-			downloadDirectory: self ressourcesDirectory;
 			ensureDownloaded ]
+]
+
+{ #category : #'as yet unclassified' }
+MolGeoDownloadedRessource class >> forceAllDownloaded [
+
+	<script: 'self forceAllDownloaded'>
+	self allSubclassesDo: [ :each | | downloader |
+		downloader := each new.
+		DiskStore current delete: downloader fileReference asPath.
+		downloader
+			download ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -30,7 +50,8 @@ MolGeoDownloadedRessource class >> ressourcesDirectory [
 { #category : #testing }
 MolGeoDownloadedRessource >> baseUrl [
 
-	^ self subclassResponsibility
+	^ 'https://raw.githubusercontent.com/OpenSmock/Molecule-Geographical-Position-Example/Issue_0001/ressources/'
+	
 ]
 
 { #category : #testing }
@@ -44,23 +65,11 @@ MolGeoDownloadedRessource >> download [
 		numberOfRetries: 5;
 		timeout: 100;
 		logToTranscript;
-		downloadTo: self downloadDirectory ensureCreateDirectory;
+		downloadTo: self class ressourcesDirectory ensureCreateDirectory;
 		yourself.
 
 	'
 Download finished - ' trace ] timeToRun traceCr
-]
-
-{ #category : #testing }
-MolGeoDownloadedRessource >> downloadDirectory [
-
-	^ downloadDirectory
-]
-
-{ #category : #testing }
-MolGeoDownloadedRessource >> downloadDirectory: aFileReference [
-
-	downloadDirectory := aFileReference
 ]
 
 { #category : #testing }
@@ -78,7 +87,7 @@ MolGeoDownloadedRessource >> fileName [
 { #category : #testing }
 MolGeoDownloadedRessource >> fileReference [
 
-	^ self downloadDirectory / self fileName
+	^ self class ressourcesDirectory / self fileName
 ]
 
 { #category : #testing }

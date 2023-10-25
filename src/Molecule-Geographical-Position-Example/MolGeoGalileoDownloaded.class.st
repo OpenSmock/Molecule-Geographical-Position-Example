@@ -1,11 +1,11 @@
 Class {
-	#name : #MolGeoMapDownloaded,
+	#name : #MolGeoGalileoDownloaded,
 	#superclass : #MolGeoDownloadedRessource,
 	#category : #'Molecule-Geographical-Position-Example'
 }
 
 { #category : #testing }
-MolGeoMapDownloaded >> fileName [
+MolGeoGalileoDownloaded >> fileName [
 
-	^ 'map.png'
+	^ 'favorite.png'
 ]
