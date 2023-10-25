@@ -45,7 +45,13 @@ BaselineOfMoleculeGeographicalPositionExample >> loadPyramid: spec [
 
 { #category : #'load scripts' }
 BaselineOfMoleculeGeographicalPositionExample >> postload: loader package: packageSpec [
-	"do nothing"
+
+	| molGeoDownloadedRessource |
+
+	molGeoDownloadedRessource := #MolGeoDownloadedRessource asClassInEnvironment: self class environment.
+	
+	molGeoDownloadedRessource ensureAllDownloaded
+
 ]
 
 { #category : #'load scripts' }
