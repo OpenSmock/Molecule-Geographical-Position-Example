@@ -38,18 +38,17 @@ In the pharo environment, left click on the environment background, and select B
 To install the project on your Pharo image you can just copy and paste the following script in the playground and click on `Do it`:
 
 ```smalltalk
-[ Metacello new
-	baseline: 'MoleculeGeographicalPositionExample';
-	repository:
-		'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
-	onConflictUseIncoming;
-	ignoreImage;
-	load ]
-		on: MCMergeOrLoadWarning
-		do: [ :warning | warning load ]
+Metacello new
+   baseline: 'MoleculeGeographicalPositionExample';
+   repository: 'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
+   load.
 ```
 
-![Capture d'écran 2023-10-26 114201](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/6e5d10fa-fc03-4325-afff-47637f63bbf8)
+![Capture d'écran 2023-10-26 115230](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/b5e93e0a-6135-44c8-aac2-dc16ba178098)
+
+It is possible that a window open asking you your author name, the name you enter is only use locally to identify the changes from the source code. Enter a name without space and click on `OK`.
+
+![Capture d'écran 2023-10-26 115727](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/c8ca385a-5ea1-4385-ae20-74d5f2554fb7)
 
 ## Dependencies
 
