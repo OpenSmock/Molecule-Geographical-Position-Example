@@ -36,8 +36,8 @@ MolGeoPosCartographyApp >> initialize [
 		MolGNSSGPS start ].
 
 	MolGNSSGPSInaccurate start.
-	MolGeoPosMapReicever start.
-	map := MolUtils instanceOf: MolGeoPosMapReicever.
+	MolGeoPosMapReceiver start.
+	map := MolUtils instanceOf: MolGeoPosMapReceiver.
 
 	rope1 := 'Accurate GPS' asRopedText.
 	rope1 attribute: (BlFontSizeAttribute size: 20).
