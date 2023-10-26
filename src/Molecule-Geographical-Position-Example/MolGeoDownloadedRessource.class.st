@@ -50,8 +50,7 @@ MolGeoDownloadedRessource class >> ressourcesDirectory [
 { #category : #testing }
 MolGeoDownloadedRessource >> baseUrl [
 
-	^ 'https://raw.githubusercontent.com/OpenSmock/Molecule-Geographical-Position-Example/Issue_0001/ressources/'
-	
+	^ 'https://github.com/OpenSmock/Molecule-Geographical-Position-Example/raw/main/ressources/'
 ]
 
 { #category : #testing }
