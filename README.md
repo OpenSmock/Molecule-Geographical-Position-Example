@@ -16,34 +16,40 @@ Download and install the [Pharo Launcher](https://pharo.org/download) for your o
 
 Open the Pharo Launcher and create a new image:
 
-**image pharo launcher Bouton "new"**
+![Capture d'écran 2023-10-26 113038](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/2389dd07-ba76-467f-9870-4da800690817)
 
-In the official distribution list, select Pharo 11 (choose 32 or 64bits depending on your system):
+In the official distribution list, select Pharo 11 (choose 32 or 64bits depending on your system) and click on `Create image`:
 
-**image pharo launcher image creation**
+![Capture d'écran 2023-10-26 113406](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/4a8eb11f-c2de-4e84-86f0-6e1e61a8c27d)
 
 Depending on when you install Pharo 11, you may find it in the Deprecated distributions section.
 
 Select the newly created image in the list then click "start":
 
-**image pharo launcher Bouton "play"**
+![Capture d'écran 2023-10-26 113618](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/c9b4083b-711c-4c7a-861b-d86e008569ec)
+
 
 ### Installation
 
 In the pharo environment, left click on the environment background, and select Browse > Playground in the menu:
 
-**image pharo menu > browse > playground**
+![Capture d'écran 2023-10-26 113819](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/046fd928-2260-4f25-8fe9-782c31f3e68a)
 
 To install the project on your Pharo image you can just copy and paste the following script in the playground and click on `Do it`:
 
 ```smalltalk
-Metacello new
-   baseline: 'MoleculeGeographicalPositionExample';
-   repository: 'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
-   load.
+[ Metacello new
+	baseline: 'MoleculeGeographicalPositionExample';
+	repository:
+		'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
+	onConflictUseIncoming;
+	ignoreImage;
+	load ]
+		on: MCMergeOrLoadWarning
+		do: [ :warning | warning load ]
 ```
 
-**image playground avec le script + bouton "Do it"**
+![Capture d'écran 2023-10-26 114201](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/6e5d10fa-fc03-4325-afff-47637f63bbf8)
 
 ## Dependencies
 
