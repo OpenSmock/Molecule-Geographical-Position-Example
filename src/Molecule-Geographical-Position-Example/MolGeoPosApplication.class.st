@@ -71,7 +71,7 @@ MolGeoPosApplication >> makeGPSButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GPS';
-		  icon: (MolGeoGPSDownloaded asForm: self iconSize);
+		  icon: (MolGeoRessource gps asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGNSSGPS start ];
@@ -83,8 +83,10 @@ MolGeoPosApplication >> makeGPSInaccurateButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GPSInaccurate';
-		  icon: (MolGeoGPSInaccurateDownloaded asForm: self iconSize);
-		  whenActivatedDo: [ self stopGeoPosEquipement.MolGNSSGPSInaccurate start ];
+		  icon: (MolGeoRessource gpsInacurrate asForm: self iconSize);
+		  whenActivatedDo: [
+			  self stopGeoPosEquipement.
+			  MolGNSSGPSInaccurate start ];
 		  yourself
 ]
 
@@ -93,7 +95,7 @@ MolGeoPosApplication >> makeGSMButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GSM';
-		  icon: (MolGeoGSMDownloaded asForm: self iconSize);
+		  icon: (MolGeoRessource gsm asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGSM start ];
@@ -105,8 +107,10 @@ MolGeoPosApplication >> makeGalileoButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'Galileo';
-		  icon: (MolGeoGalileoDownloaded asForm: self iconSize);
-		  whenActivatedDo: [ self stopGeoPosEquipement. MolGNSSGalileo start ];
+		  icon: (MolGeoRessource galileo asForm: self iconSize);
+		  whenActivatedDo: [
+			  self stopGeoPosEquipement.
+			  MolGNSSGalileo start ];
 		  yourself
 ]
 
@@ -115,15 +119,17 @@ MolGeoPosApplication >> makeWiFiButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'WiFi';
-		  icon: (MolGeoWiFiDownloaded asForm: self iconSize);
-		  whenActivatedDo: [ self stopGeoPosEquipement. MolWiFi start ];
+		  icon: (MolGeoRessource wiFi asForm: self iconSize);
+		  whenActivatedDo: [
+			  self stopGeoPosEquipement.
+			  MolWiFi start ];
 		  yourself
 ]
 
 { #category : #'as yet unclassified' }
 MolGeoPosApplication >> mapForm [
 
-	^ (MolGeoMapDownloaded asForm: self maximumMapSize)
+	^ MolGeoRessource map asForm: self maximumMapSize
 ]
 
 { #category : #'as yet unclassified' }

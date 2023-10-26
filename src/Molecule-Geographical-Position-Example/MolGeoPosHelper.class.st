@@ -10,7 +10,7 @@ MolGeoPosHelper >> openTheExample [
 	^ Lesson
 		  title: 'Molecule Geographical Position - help'
 		  lesson:
-			  '"To launch the applicaiton you can copy/paste the following line in a playground and clic on <Do it>."
+			  '"To launch the application you can copy/paste the following line in a playground and clic on <Do it>."
 MolGeoPosApplication open.
 
 "You can also select the previous line with your mouse and press (ctrl + D or cmd + D) to reopen it at any moment."
