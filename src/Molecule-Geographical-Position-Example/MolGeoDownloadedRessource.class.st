@@ -1,7 +1,7 @@
 Class {
 	#name : #MolGeoDownloadedRessource,
 	#superclass : #Object,
-	#category : #'Molecule-Geographical-Position-Example'
+	#category : #'Molecule-Geographical-Position-Example-downloader'
 }
 
 { #category : #converting }
