@@ -41,10 +41,11 @@ To install the project on your Pharo image you can just copy and paste the follo
 Metacello new
    baseline: 'MoleculeGeographicalPositionExample';
    repository: 'github://OpenSmock/Molecule-Geographical-Position-Example:main/src';
+	onConflictUseIncoming;
    load.
 ```
 
-![Capture d'écran 2023-10-26 115230](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/b5e93e0a-6135-44c8-aac2-dc16ba178098)
+![Capture d'écran 2023-10-26 144324](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/f340641d-3d4f-4304-971a-8b319eb68c4b)
 
 It is possible that a window open asking you your author name, the name you enter is only use locally to identify the changes from the source code. Enter a name without space and click on `OK`.
 
@@ -52,7 +53,9 @@ It is possible that a window open asking you your author name, the name you ente
 
 ## Dependencies
 
-TODO
++ [Bloc](https://github.com/pharo-graphics/Bloc) - Low-level UI infrastructure & framework for Pharo.
++ [Pyramid](https://github.com/OpenSmock/Pyramid) - Pyramid is an User-Interface (UI) editor.
++ [Molecule](https://github.com/OpenSmock/Molecule) - Molecule is a Pharo component framework.
 
 ## License
 
