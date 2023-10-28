@@ -8,7 +8,7 @@ Class {
 		'whenActivatedDo',
 		'whenDesactivatedDo'
 	],
-	#category : #'Molecule-Geographical-Position-Example-view'
+	#category : #'Molecule-Geographical-Position-Example-Application'
 }
 
 { #category : #examples }

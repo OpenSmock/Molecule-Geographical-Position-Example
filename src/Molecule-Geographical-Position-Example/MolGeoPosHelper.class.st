@@ -1,16 +1,23 @@
 Class {
 	#name : #MolGeoPosHelper,
 	#superclass : #AbstractTutorial,
-	#category : #'Molecule-Geographical-Position-Example-tutorial'
+	#category : #'Molecule-Geographical-Position-Example-Tutorial'
 }
+
+{ #category : #'instance creation' }
+MolGeoPosHelper class >> openAsUnclosableWindow [
+	<script>
+	
+	(ProfStef goOn: self) window makeUnclosable
+]
 
 { #category : #lessons }
 MolGeoPosHelper >> openTheExample [
 
 	^ Lesson
-		  title: 'Molecule Geographical Position - help'
+		  title: 'Molecule Geographical Position Example - Instructions'
 		  lesson:
-			  '"To launch the application you can copy/paste the following line in a playground and clic on <Do it>."
+			  '"To launch the application select the following line, do a right clic to open the contextual menu and select <Do it>."
 MolGeoPosApplication open.
 
 "You can also select the previous line with your mouse and press (ctrl + D or cmd + D) to reopen it at any moment."
@@ -39,8 +46,6 @@ MolGNSSGPSInaccurate.
 MolGNSSGalileo.
 MolGSM.
 MolWiFi.
-
-
 '
 ]
 

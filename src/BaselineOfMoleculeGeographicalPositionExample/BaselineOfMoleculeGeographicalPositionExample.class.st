@@ -48,9 +48,8 @@ BaselineOfMoleculeGeographicalPositionExample >> postload: loader package: packa
 
 	| molGeoPosHelper |
 	"Open helper."
-	molGeoPosHelper := #MolGeoPosHelper asClassInEnvironment:
-		                   self class environment.
-	(ProfStef goOn: molGeoPosHelper) window makeUnclosable
+	molGeoPosHelper := #MolGeoPosHelper asClassInEnvironment: self class environment.
+	molGeoPosHelper openAsUnclosableWindow.
 ]
 
 { #category : #'load scripts' }

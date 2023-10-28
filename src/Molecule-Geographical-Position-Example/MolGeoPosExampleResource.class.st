@@ -1,14 +1,14 @@
 Class {
-	#name : #MolGeoRessource,
+	#name : #MolGeoPosExampleResource,
 	#superclass : #Object,
 	#instVars : [
 		'fileName'
 	],
-	#category : #'Molecule-Geographical-Position-Example-ressources'
+	#category : #'Molecule-Geographical-Position-Example-Resources'
 }
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> galileo [
+MolGeoPosExampleResource class >> galileo [
 
 	^ self new
 		  fileName: 'favorite.png';
@@ -16,7 +16,7 @@ MolGeoRessource class >> galileo [
 ]
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> gps [
+MolGeoPosExampleResource class >> gps [
 
 	^ self new
 		  fileName: 'link.png';
@@ -24,7 +24,7 @@ MolGeoRessource class >> gps [
 ]
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> gpsInacurrate [
+MolGeoPosExampleResource class >> gpsInacurrate [
 
 	^ self new
 		  fileName: 'chains.png';
@@ -32,7 +32,7 @@ MolGeoRessource class >> gpsInacurrate [
 ]
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> gsm [
+MolGeoPosExampleResource class >> gsm [
 
 	^ self new
 		  fileName: 'antenna.png';
@@ -40,7 +40,7 @@ MolGeoRessource class >> gsm [
 ]
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> map [
+MolGeoPosExampleResource class >> map [
 
 	^ self new
 		  fileName: 'map.png';
@@ -48,7 +48,7 @@ MolGeoRessource class >> map [
 ]
 
 { #category : #'as yet unclassified' }
-MolGeoRessource class >> wiFi [
+MolGeoPosExampleResource class >> wiFi [
 
 	^ self new
 		  fileName: 'wifi.png';
@@ -56,7 +56,7 @@ MolGeoRessource class >> wiFi [
 ]
 
 { #category : #converting }
-MolGeoRessource >> asForm [
+MolGeoPosExampleResource >> asForm [
 
 	^ (Form fromFileNamed: self fileReference)
 		  mapColor: Color white
@@ -64,13 +64,13 @@ MolGeoRessource >> asForm [
 ]
 
 { #category : #converting }
-MolGeoRessource >> asForm: anExtent [
+MolGeoPosExampleResource >> asForm: anExtent [
 
 	^ self asForm scaledToSize: anExtent
 ]
 
 { #category : #default }
-MolGeoRessource >> baseIcebergDirectory [
+MolGeoPosExampleResource >> baseIcebergDirectory [
 
 	| expectedName myRepository |
 	expectedName := 'molecule-geographical-position-example'.
@@ -87,31 +87,31 @@ myRepository := IceRepository registry
 ]
 
 { #category : #default }
-MolGeoRessource >> baseRessourceDirectory [
+MolGeoPosExampleResource >> baseRessourceDirectory [
 
 	^ self baseIcebergDirectory / 'ressources'
 ]
 
 { #category : #accessing }
-MolGeoRessource >> fileName [
+MolGeoPosExampleResource >> fileName [
 
 	^ fileName
 ]
 
 { #category : #accessing }
-MolGeoRessource >> fileName: aString [
+MolGeoPosExampleResource >> fileName: aString [
 
 	fileName := aString
 ]
 
 { #category : #accessing }
-MolGeoRessource >> fileReference [
+MolGeoPosExampleResource >> fileReference [
 
 	^ self baseRessourceDirectory / self fileName
 ]
 
 { #category : #initialization }
-MolGeoRessource >> initialize [
+MolGeoPosExampleResource >> initialize [
 
 	super initialize.
 
@@ -119,7 +119,7 @@ MolGeoRessource >> initialize [
 ]
 
 { #category : #testing }
-MolGeoRessource >> isDownloaded [
+MolGeoPosExampleResource >> isDownloaded [
 
 	^ self fileReference exists
 ]

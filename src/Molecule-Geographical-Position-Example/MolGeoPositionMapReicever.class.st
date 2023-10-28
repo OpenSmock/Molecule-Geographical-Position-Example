@@ -8,15 +8,15 @@ Class {
 		'pointerH',
 		'pointer'
 	],
-	#category : #'Molecule-Geographical-Position-Example-view'
+	#category : #'Molecule-Geographical-Position-Example-Application'
 }
 
 { #category : #'pyramid-serialized-bloc' }
 MolGeoPositionMapReicever class >> pystonSpec [
 	"This class has been generated using Pyramid.
 
-	By: YannLEGOFF
-	2023-10-25 20:28:29"
+	By: labordep
+	2023-10-28 12:15:56"
 
 	<pySTON>
 	^ '[
@@ -134,7 +134,13 @@ MolGeoPositionMapReicever class >> pystonSpec [
 					#geometry : BlEllipseGeometry {
 						#extent : Point [ 100.0, 100.0 ],
 						#pathCache : BlPathCache {
-							#geometry : @42
+							#geometry : @42,
+							#strokedBounds : BlBounds {
+								#left : 0.0,
+								#top : 0.0,
+								#right : 100.0,
+								#bottom : 100.0
+							}
 						}
 					},
 					#border : BlBorder {
@@ -174,6 +180,128 @@ MolGeoPositionMapReicever class >> pystonSpec [
 					#shouldHandleMousePickOutsideEvent : false
 				},
 				#layout : @20
+			},
+			BlElement {
+				#children : BlChildrenArray [
+					BlTextElement {
+						#children : BlChildrenArray [ ],
+						#constraints : BlLayoutCommonConstraints {
+							#vertical : BlLayoutCommonConstraintsAxis {
+								#resizer : BlLayoutFitContentResizer { }
+							},
+							#horizontal : BlLayoutCommonConstraintsAxis {
+								#resizer : @64
+							},
+							#constraints : {
+								Class [ #BlFlowLayout ] : BlFlowLayoutConstraints {
+									#vertical : BlFlowLayoutConstraintsVertical {
+										#alignment : BlTopAlignment { }
+									},
+									#horizontal : BlFlowLayoutConstraintsHorizontal {
+										#alignment : BlHorizontalStartAlignment { }
+									},
+									#newLine : false,
+									#weight : 0,
+									#display : BlFlowLayoutInline { }
+								},
+								Class [ #BlProportionalLayout ] : BlProportionalLayoutConstraints {
+									#vertical : BlProportionalLayoutConstraintsVertical {
+										#top : 0.9,
+										#bottom : 1
+									},
+									#horizontal : BlProportionalLayoutConstraintsHorizontal {
+										#left : 0.8,
+										#right : 1
+									}
+								}
+							},
+							#position : Point [ 0.0, 0.0 ],
+							#margin : BlInsets {
+								#top : 0.0,
+								#left : 0.0,
+								#bottom : 0.0,
+								#right : 0.0
+							},
+							#padding : BlInsets {
+								#top : 5.0,
+								#left : 5.0,
+								#bottom : 5.0,
+								#right : 5.0
+							},
+							#minHeight : 0.0,
+							#minWidth : 0.0,
+							#maxHeight : @13,
+							#maxWidth : @13,
+							#ignoredByLayout : false,
+							#previouslyAccessedConstraints : @75,
+							#previouslyAccessedConstraintsType : @74,
+							#accountTransformation : false
+						},
+						#visuals : BlCustomVisuals {
+							#background : BlPaintBackground {
+								#paint : BlColorPaint {
+									#color : Color {
+										#red : 1.0,
+										#green : 1.0,
+										#blue : 1.0,
+										#alpha : 0.4980392156862745
+									}
+								}
+							}
+						},
+						#userData : IdentityDictionary {
+							#elementId : BlElementNamedId {
+								#identifier : #B
+							},
+							#shouldHandleMousePickOutsideEvent : false
+						},
+						#layout : BlBasicLayout { },
+						#text : BlRopedText {
+							#rope : BlAttributeRope {
+								#attributes : [
+									BlFontSizeAttribute {
+										#isOverwritableByStyler : true,
+										#size : 9
+									}
+								],
+								#rope : BlCollectionRope {
+									#collection : ''© OpenStreetMap''
+								}
+							}
+						}
+					}
+				],
+				#constraints : BlLayoutCommonConstraints {
+					#vertical : BlLayoutCommonConstraintsAxis {
+						#resizer : BlLayoutExactResizer {
+							#size : 20.0
+						}
+					},
+					#horizontal : BlLayoutCommonConstraintsAxis {
+						#resizer : BlLayoutExactResizer {
+							#size : 80.0
+						}
+					},
+					#position : Point [ 417.0, 277.0 ],
+					#margin : @79,
+					#padding : @79,
+					#minHeight : 0.0,
+					#minWidth : 0.0,
+					#maxHeight : @13,
+					#maxWidth : @13,
+					#ignoredByLayout : false,
+					#accountTransformation : false
+				},
+				#visuals : BlCustomVisuals {
+					#clipChildren : false
+				},
+				#userData : IdentityDictionary {
+					#elementId : BlElementNamedId {
+						#identifier : #mapLicense
+					},
+					#shouldHandleMousePickOutsideEvent : false
+				},
+				#layout : BlBasicLayout { }
 			}
 		],
 		#constraints : BlLayoutCommonConstraints {
@@ -194,7 +322,7 @@ MolGeoPositionMapReicever class >> pystonSpec [
 				#bottom : 0.0,
 				#right : 0.0
 			},
-			#padding : @63,
+			#padding : @109,
 			#minHeight : 0.0,
 			#minWidth : 0.0,
 			#maxHeight : @13,
@@ -249,7 +377,6 @@ MolGeoPositionMapReicever >> componentActivate [
 { #category : #'life cycle' }
 MolGeoPositionMapReicever >> componentPassivate [
 
-	self space ifNotNil: [ :s | s close ].
 	self getMolGeoPosEquipmentEventsSubscriber unsubscribe: self
 ]
 
@@ -299,5 +426,6 @@ MolGeoPositionMapReicever >> initialize [
 	pointerV := self childWithId: #pointerV.
 	pointerH := self childWithId: #pointerH.
 	pointer := self childWithId: #pointerCircle.
+	self background: Color gray.
 	self clipChildren: true.
 ]

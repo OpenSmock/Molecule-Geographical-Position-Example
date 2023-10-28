@@ -1,7 +1,7 @@
 Class {
 	#name : #MolGeoButtonElementNotSelected,
 	#superclass : #MolGeoButtonElementAbstract,
-	#category : #'Molecule-Geographical-Position-Example-view'
+	#category : #'Molecule-Geographical-Position-Example-Application'
 }
 
 { #category : #'as yet unclassified' }

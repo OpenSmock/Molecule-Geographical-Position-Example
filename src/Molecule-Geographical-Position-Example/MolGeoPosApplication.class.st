@@ -5,17 +5,32 @@ Class {
 		'map',
 		'menu'
 	],
-	#category : #'Molecule-Geographical-Position-Example-view'
+	#category : #'Molecule-Geographical-Position-Example-Application'
 }
 
 { #category : #'instance creation' }
-MolGeoPosApplication class >> open [
+MolGeoPosApplication class >> close [
+	<script>
 
-	<script: 'self open'>
+	| current |
+	current := MolUtils instanceOf: self class.
+	current ifNotNil:[ current space close ].
+
+	"Clean previous opened version if necessary"
+	MolComponentManager cleanUp.
+]
+
+{ #category : #'instance creation' }
+MolGeoPosApplication class >> open [
+	<script>
+
+	self close.
+
+	"Open new application"
 	^ self new openApplication
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> iconSize [
 
 	^ 28 @ 28
@@ -27,27 +42,24 @@ MolGeoPosApplication >> initialize [
 	super initialize.
 	map := self makeAndStartMapComponent.
 	menu := self makeComponentsSelectionMenu.
-	self addChildren: {
-			map.
-			menu }.
+	self addChildren: { map . menu }.
 	self layout: BlLinearLayout vertical alignCenter.
 	self constraintsDo: [ :c |
 		c vertical fitContent.
 		c horizontal fitContent ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeAndStartMapComponent [
 
 	| mapElement |
-	MolGeoPositionMapReicever start.
-	mapElement := MolUtils instanceOf: MolGeoPositionMapReicever.
+	mapElement := MolGeoPositionMapReicever start.
 	mapElement backgroundForm: self mapForm.
-	mapElement margin: (BlInsets bottom: 16).
+	mapElement size: self maximumMapSize.
 	^ mapElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeComponentsSelectionMenu [
 
 	| galileo gps gpsInacurate gsm wifi |
@@ -66,84 +78,84 @@ MolGeoPosApplication >> makeComponentsSelectionMenu [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeGPSButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GPS';
-		  icon: (MolGeoRessource gps asForm: self iconSize);
+		  icon: (MolGeoPosExampleResource gps asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGNSSGPS start ];
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeGPSInaccurateButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GPSInaccurate';
-		  icon: (MolGeoRessource gpsInacurrate asForm: self iconSize);
+		  icon: (MolGeoPosExampleResource gpsInacurrate asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGNSSGPSInaccurate start ];
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeGSMButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'GSM';
-		  icon: (MolGeoRessource gsm asForm: self iconSize);
+		  icon: (MolGeoPosExampleResource gsm asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGSM start ];
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeGalileoButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'Galileo';
-		  icon: (MolGeoRessource galileo asForm: self iconSize);
+		  icon: (MolGeoPosExampleResource galileo asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolGNSSGalileo start ];
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> makeWiFiButton [
 
 	^ MolGeoSwitchElement new
 		  label: 'WiFi';
-		  icon: (MolGeoRessource wiFi asForm: self iconSize);
+		  icon: (MolGeoPosExampleResource wiFi asForm: self iconSize);
 		  whenActivatedDo: [
 			  self stopGeoPosEquipement.
 			  MolWiFi start ];
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> mapForm [
 
-	^ MolGeoRessource map asForm: self maximumMapSize
+	^ MolGeoPosExampleResource map asForm: self maximumMapSize
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> maximumMapSize [
 
-	^ 500 @ 500
+	^ 500 @ 300
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> openApplication [
-
+ 
 	| space |
 	space := BlSpace new
-		         extent: self mapForm extent + (0 @ 96);
+		         extent: (self windowSize);
 		         yourself.
 
 	space root addChild: self.
@@ -158,11 +170,11 @@ MolGeoPosApplication >> openApplication [
 
 
 	space resizable: false.
-	space title: 'Molecule Geo Position'.
-	space show
+	space title: 'Molecule Geographical Position Example'.
+	space show editWithPyramid 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MolGeoPosApplication >> stopGeoPosEquipement [
 	"stops every possible component if it's launched"
 
@@ -178,4 +190,10 @@ MolGeoPosApplication >> stopGeoPosEquipement [
 	
 	"One component to stop."
 	component class stop
+]
+
+{ #category : #private }
+MolGeoPosApplication >> windowSize [
+
+	^ 500 @ 400
 ]

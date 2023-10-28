@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'switches'
 	],
-	#category : #'Molecule-Geographical-Position-Example-view'
+	#category : #'Molecule-Geographical-Position-Example-Application'
 }
 
 { #category : #'as yet unclassified' }
@@ -32,6 +32,7 @@ MolGeoConnectedSwitchesElement >> initialize [
 	super initialize.
 	switches := {  }.
 	self layout: (BlLinearLayout horizontal cellSpacing: 8).
+	self margin: (BlInsets top: 16 bottom: 16).
 	self clipChildren: false.
 	self constraintsDo: [ :c |
 		c vertical fitContent.
