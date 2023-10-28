@@ -53,7 +53,7 @@ MolGeoPosApplication >> initialize [
 MolGeoPosApplication >> makeAndStartMapComponent [
 
 	| mapElement |
-	mapElement := MolGeoPositionMapReicever start.
+	mapElement := MolGeoPosMapReceiver start.
 	mapElement backgroundForm: self mapForm.
 	mapElement size: self maximumMapSize.
 	^ mapElement
