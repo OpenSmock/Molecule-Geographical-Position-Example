@@ -171,7 +171,7 @@ MolGeoPosApplication >> openApplication [
 
 	space resizable: false.
 	space title: 'Molecule Geographical Position Example'.
-	space show editWithPyramid 
+	space show  
 ]
 
 { #category : #private }
