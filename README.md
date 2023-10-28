@@ -61,4 +61,11 @@ It is possible that a window open asking you your author name, the name you ente
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project uses images from Freepik Company, S.L. and OpenStreetMap® - see the [LICENSE](LICENSE) file for details.
+Molecule Geographical Position Example uses images by Freepik Company, S.L.
+requires citations
+https://www.freepikcompany.com/legal
+
+Molecule Geographical Position Example uses images by OpenStreetMap®
+Open Data Commons Open Database License (ODbL)
+https://opendatacommons.org/licenses/odbl/
+
