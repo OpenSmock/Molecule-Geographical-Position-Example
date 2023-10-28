@@ -3,6 +3,8 @@
 
 # Molecule Geographical Position Example
 
+![image](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/49183340/557c6bbf-9e0b-4922-99d4-565a26b8798d)
+
 Molecule Geographical Position Example is a repository showcasing one graphical example of using [Molecule](https://github.com/OpenSmock/Molecule). The goal is to have a short and simple application that can be emulated in your existing work.
 
 The application contains a component that connects to a positioning system hardware (GPS, GSM, WiFi, Galileo) and displays the data on a view map. The running application can switch between multiple positioning hardware.
