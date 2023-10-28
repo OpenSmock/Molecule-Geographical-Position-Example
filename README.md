@@ -1,4 +1,5 @@
 [![License](https://img.shields.io/github/license/OpenSmock/Molecule-Geographical-Position-Example.svg)](./LICENSE)
+[![Tests](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/actions/workflows/Tests.yml/badge.svg)](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/actions/workflows/Tests.yml)
 
 # Molecule Geographical Position Example
 
@@ -18,11 +19,11 @@ Open the Pharo Launcher and create a new image:
 
 ![Capture d'écran 2023-10-26 113038](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/2389dd07-ba76-467f-9870-4da800690817)
 
-In the official distribution list, select Pharo 11 (choose 32 or 64bits depending on your system) and click on `Create image`:
+In the official distribution list, select **Pharo 11** (choose 32 or 64bits depending on your system) and click on `Create image`:
 
 ![Capture d'écran 2023-10-26 113406](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/4a8eb11f-c2de-4e84-86f0-6e1e61a8c27d)
 
-Depending on when you install Pharo 11, you may find it in the Deprecated distributions section.
+Depending on when you install **Pharo 11**, you may find it in the Deprecated distributions section.
 
 Select the newly created image in the list then click "start":
 
@@ -61,4 +62,11 @@ It is possible that a window open asking you your author name, the name you ente
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project uses images from Freepik Company, S.L. and OpenStreetMap® - see the [LICENSE](LICENSE) file for details.
+Molecule Geographical Position Example uses images by Freepik Company, S.L.
+requires citations
+https://www.freepikcompany.com/legal
+
+Molecule Geographical Position Example uses images by OpenStreetMap®
+Open Data Commons Open Database License (ODbL)
+https://opendatacommons.org/licenses/odbl/
+
