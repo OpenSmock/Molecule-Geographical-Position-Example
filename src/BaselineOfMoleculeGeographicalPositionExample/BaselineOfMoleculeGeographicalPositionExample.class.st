@@ -46,11 +46,10 @@ BaselineOfMoleculeGeographicalPositionExample >> loadPyramid: spec [
 { #category : #'load scripts' }
 BaselineOfMoleculeGeographicalPositionExample >> postload: loader package: packageSpec [
 
-	| molGeoDownloadedRessource |
-
-	molGeoDownloadedRessource := #MolGeoDownloadedRessource asClassInEnvironment: self class environment.
-	
-	molGeoDownloadedRessource ensureAllDownloaded
+	| molGeoPosHelper |
+	"Open helper."
+	molGeoPosHelper := #MolGeoPosHelper asClassInEnvironment: self class environment.
+	molGeoPosHelper openAsUnclosableWindow
 
 ]
 
