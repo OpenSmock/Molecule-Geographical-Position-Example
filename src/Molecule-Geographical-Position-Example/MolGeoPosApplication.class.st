@@ -10,14 +10,14 @@ Class {
 
 { #category : #'instance creation' }
 MolGeoPosApplication class >> close [
-	<script>
 
+	<script>
 	| current |
-	current := MolUtils instanceOf: self class.
-	current ifNotNil:[ current space close ].
+	current := MolUtils instanceOf: MolGeoPosMapReceiver.
+	current ifNotNil: [ current space close ].
 
 	"Clean previous opened version if necessary"
-	MolComponentManager cleanUp.
+	MolComponentManager cleanUp
 ]
 
 { #category : #'instance creation' }
