@@ -10,14 +10,14 @@ Class {
 
 { #category : #'instance creation' }
 MolGeoPosApplication class >> close [
-	<script>
 
+	<script>
 	| current |
-	current := MolUtils instanceOf: self class.
-	current ifNotNil:[ current space close ].
+	current := MolUtils instanceOf: MolGeoPosMapReceiver.
+	current ifNotNil: [ current space close ].
 
 	"Clean previous opened version if necessary"
-	MolComponentManager cleanUp.
+	MolComponentManager cleanUp
 ]
 
 { #category : #'instance creation' }
@@ -28,6 +28,12 @@ MolGeoPosApplication class >> open [
 
 	"Open new application"
 	^ self new openApplication
+]
+
+{ #category : #'component control' }
+MolGeoPosApplication >> activateMapComponent [
+
+	self mapComponent componentActivate
 ]
 
 { #category : #private }
@@ -139,6 +145,13 @@ MolGeoPosApplication >> makeWiFiButton [
 ]
 
 { #category : #private }
+MolGeoPosApplication >> mapComponent [
+
+	^ MolComponentManager default locatorServices searchComponentTypeImplementorFor:
+		  MolGeoPosReceiverType
+]
+
+{ #category : #private }
 MolGeoPosApplication >> mapForm [
 
 	^ MolGeoPosExampleResource map asForm: self maximumMapSize
@@ -160,9 +173,20 @@ MolGeoPosApplication >> openApplication [
 
 	space root addChild: self.
 
+	"When space close, we remove the components"
 	space
 		when: BlSpaceClosedEvent
-		do: [ :evt | MolComponentManager cleanUp ].
+		do: [ :evt | self removeComponents ].
+
+	"When space minimize, we passivate the map component"
+	space
+		when: BlSpaceResizedEvent
+		do: [ :evt | self passivateMapComponent ].
+	
+	"When space focus in (resize), we activate the map component"
+	space
+		when: BlSpaceFocusInEvent
+		do: [ :evt | self activateMapComponent ].
 
 	space enqueueTask: (BlTaskAction new
 			 action: [ space center ];
@@ -172,6 +196,18 @@ MolGeoPosApplication >> openApplication [
 	space resizable: false.
 	space title: 'Molecule Geographical Position Example'.
 	space show  
+]
+
+{ #category : #'component control' }
+MolGeoPosApplication >> passivateMapComponent [
+
+	self mapComponent passivateComponent
+]
+
+{ #category : #'component control' }
+MolGeoPosApplication >> removeComponents [
+
+	MolComponentManager cleanUp
 ]
 
 { #category : #private }

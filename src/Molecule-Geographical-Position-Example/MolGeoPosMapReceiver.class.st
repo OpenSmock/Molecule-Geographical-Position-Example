@@ -353,7 +353,7 @@ MolGeoPosMapReceiver class >> pystonSpec [
 ]'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'background - image' }
 MolGeoPosMapReceiver >> backgroundForm: aForm [
 
 (self childWithId: #map) background: aForm.

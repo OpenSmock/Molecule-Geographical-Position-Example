@@ -20,7 +20,7 @@ MolGeoConnectedSwitchesElement class >> example [
 		openInNewSpace
 ]
 
-{ #category : #accessing }
+{ #category : #control }
 MolGeoConnectedSwitchesElement >> deactivateAllSwitchesExcept: aMolGeoSwitchElement [
 
 	self switches do: [ :each | aMolGeoSwitchElement = each ifFalse: [ each state: false ] ]
