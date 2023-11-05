@@ -13,19 +13,19 @@ MolGeoButtonElementNotSelected class >> example [
 		openInNewSpace
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementNotSelected >> hoverColor [
 
 	^ Color fromHexString: '#bebdbf'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementNotSelected >> primaryColor [
 
 	^ Color fromHexString: '#6c757d'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementNotSelected >> secondaryColor [
 
 	^ Color transparent

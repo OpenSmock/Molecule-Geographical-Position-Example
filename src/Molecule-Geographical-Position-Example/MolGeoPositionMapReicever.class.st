@@ -225,7 +225,7 @@ MolGeoPositionMapReicever class >> pystonSpec [
 ]'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 MolGeoPositionMapReicever >> backgroundForm: aForm [
 
 (self childWithId: #map) background: aForm.
@@ -249,8 +249,13 @@ MolGeoPositionMapReicever >> componentActivate [
 { #category : #'life cycle' }
 MolGeoPositionMapReicever >> componentPassivate [
 
-	self space ifNotNil: [ :s | s close ].
 	self getMolGeoPosEquipmentEventsSubscriber unsubscribe: self
+]
+
+{ #category : #'life cycle' }
+MolGeoPositionMapReicever >> componentRemove [
+
+	self space ifNotNil: [ :s | s close ].
 ]
 
 { #category : #events }

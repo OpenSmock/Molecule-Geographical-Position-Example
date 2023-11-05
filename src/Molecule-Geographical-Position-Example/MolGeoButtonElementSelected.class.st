@@ -13,13 +13,13 @@ MolGeoButtonElementSelected class >> example [
 		openInNewSpace
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementSelected >> hoverColor [
 
 	^ Color fromHexString: '#78A7D6'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - text' }
 MolGeoButtonElementSelected >> makeNewLabelElement: aString [
 
 	| rope |
@@ -31,13 +31,13 @@ MolGeoButtonElementSelected >> makeNewLabelElement: aString [
 	^ rope asElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementSelected >> primaryColor [
 
 	^ Color fromHexString: '#0D3151'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementSelected >> secondaryColor [
 
 	^ Color fromHexString: '#8DBEF1'

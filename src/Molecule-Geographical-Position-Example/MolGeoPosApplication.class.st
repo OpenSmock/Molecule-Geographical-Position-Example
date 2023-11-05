@@ -15,7 +15,17 @@ MolGeoPosApplication class >> open [
 	^ self new openApplication
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+MolGeoPosApplication >> getMapComponent [
+
+	| manager |
+	manager := MolComponentManager default.
+
+	^ manager locatorServices searchComponentTypeImplementorFor:
+		  MolGeoPosReceiverType
+]
+
+{ #category : #'accessing - resources' }
 MolGeoPosApplication >> iconSize [
 
 	^ 28 @ 28
@@ -25,7 +35,8 @@ MolGeoPosApplication >> iconSize [
 MolGeoPosApplication >> initialize [
 
 	super initialize.
-	map := self makeAndStartMapComponent.
+	MolGeoPositionMapReicever start.
+	map := self makeMapComponent.
 	menu := self makeComponentsSelectionMenu.
 	self addChildren: {
 			map.
@@ -36,18 +47,7 @@ MolGeoPosApplication >> initialize [
 		c horizontal fitContent ]
 ]
 
-{ #category : #'as yet unclassified' }
-MolGeoPosApplication >> makeAndStartMapComponent [
-
-	| mapElement |
-	MolGeoPositionMapReicever start.
-	mapElement := MolUtils instanceOf: MolGeoPositionMapReicever.
-	mapElement backgroundForm: self mapForm.
-	mapElement margin: (BlInsets bottom: 16).
-	^ mapElement
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 MolGeoPosApplication >> makeComponentsSelectionMenu [
 
 	| galileo gps gpsInacurate gsm wifi |
@@ -66,7 +66,7 @@ MolGeoPosApplication >> makeComponentsSelectionMenu [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 MolGeoPosApplication >> makeGPSButton [
 
 	^ MolGeoSwitchElement new
@@ -78,7 +78,7 @@ MolGeoPosApplication >> makeGPSButton [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 MolGeoPosApplication >> makeGPSInaccurateButton [
 
 	^ MolGeoSwitchElement new
@@ -90,7 +90,7 @@ MolGeoPosApplication >> makeGPSInaccurateButton [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 MolGeoPosApplication >> makeGSMButton [
 
 	^ MolGeoSwitchElement new
@@ -102,7 +102,7 @@ MolGeoPosApplication >> makeGSMButton [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 MolGeoPosApplication >> makeGalileoButton [
 
 	^ MolGeoSwitchElement new
@@ -114,7 +114,17 @@ MolGeoPosApplication >> makeGalileoButton [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
+MolGeoPosApplication >> makeMapComponent [
+
+	| mapElement |
+	mapElement := MolUtils instanceOf: MolGeoPositionMapReicever.
+	mapElement backgroundForm: self mapForm.
+	mapElement margin: (BlInsets bottom: 16).
+	^ mapElement
+]
+
+{ #category : #factory }
 MolGeoPosApplication >> makeWiFiButton [
 
 	^ MolGeoSwitchElement new
@@ -126,19 +136,19 @@ MolGeoPosApplication >> makeWiFiButton [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - resources' }
 MolGeoPosApplication >> mapForm [
 
 	^ MolGeoRessource map asForm: self maximumMapSize
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - resources' }
 MolGeoPosApplication >> maximumMapSize [
 
 	^ 500 @ 500
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #control }
 MolGeoPosApplication >> openApplication [
 
 	| space |
@@ -148,9 +158,18 @@ MolGeoPosApplication >> openApplication [
 
 	space root addChild: self.
 
+	"When Space Close : stop all components"
+	space when: BlSpaceClosedEvent do: [ :evt | self stopAllComponents ].
+
+	"When BlSpaceFocusOutEvent : pause all components"
 	space
-		when: BlSpaceClosedEvent
-		do: [ :evt | MolComponentManager cleanUp ].
+		when: BlSpaceResizedEvent
+		do: [ :evt | self pauseMapComponent ].
+
+	"When BlSpaceFocusInEvent : unpause all components"
+	space
+		when: BlSpaceFocusInEvent
+		do: [ :evt | self unpauseMapComponent ].
 
 	space enqueueTask: (BlTaskAction new
 			 action: [ space center ];
@@ -162,7 +181,19 @@ MolGeoPosApplication >> openApplication [
 	space show
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #control }
+MolGeoPosApplication >> pauseMapComponent [
+
+	self getMapComponent componentPassivate
+]
+
+{ #category : #control }
+MolGeoPosApplication >> stopAllComponents [
+
+MolComponentManager cleanUp
+]
+
+{ #category : #control }
 MolGeoPosApplication >> stopGeoPosEquipement [
 	"stops every possible component if it's launched"
 
@@ -178,4 +209,10 @@ MolGeoPosApplication >> stopGeoPosEquipement [
 	
 	"One component to stop."
 	component class stop
+]
+
+{ #category : #control }
+MolGeoPosApplication >> unpauseMapComponent [
+
+	self getMapComponent componentActivate
 ]
