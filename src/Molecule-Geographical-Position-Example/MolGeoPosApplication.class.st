@@ -140,7 +140,7 @@ MolGeoPosApplication >> makeGalileoButton [
 MolGeoPosApplication >> makeMapComponent [
 
 	| mapElement |
-	mapElement := MolUtils instanceOf: MolGeoPositionMapReicever.
+	mapElement := MolUtils instanceOf: MolGeoPosMapReceiver.
 	mapElement backgroundForm: self mapForm.
 	mapElement margin: (BlInsets bottom: 16).
 	^ mapElement
