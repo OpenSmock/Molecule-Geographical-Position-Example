@@ -30,6 +30,16 @@ MolGeoPosApplication class >> open [
 	^ self new openApplication
 ]
 
+{ #category : #accessing }
+MolGeoPosApplication >> getMapComponent [
+
+	| manager |
+	manager := MolComponentManager default.
+
+	^ manager locatorServices searchComponentTypeImplementorFor:
+		  MolGeoPosReceiverType
+]
+
 { #category : #private }
 MolGeoPosApplication >> iconSize [
 
@@ -126,6 +136,16 @@ MolGeoPosApplication >> makeGalileoButton [
 		  yourself
 ]
 
+{ #category : #factory }
+MolGeoPosApplication >> makeMapComponent [
+
+	| mapElement |
+	mapElement := MolUtils instanceOf: MolGeoPositionMapReicever.
+	mapElement backgroundForm: self mapForm.
+	mapElement margin: (BlInsets bottom: 16).
+	^ mapElement
+]
+
 { #category : #private }
 MolGeoPosApplication >> makeWiFiButton [
 
@@ -174,6 +194,18 @@ MolGeoPosApplication >> openApplication [
 	space show  
 ]
 
+{ #category : #control }
+MolGeoPosApplication >> pauseMapComponent [
+
+	self getMapComponent componentPassivate
+]
+
+{ #category : #control }
+MolGeoPosApplication >> stopAllComponents [
+
+MolComponentManager cleanUp
+]
+
 { #category : #private }
 MolGeoPosApplication >> stopGeoPosEquipement [
 	"stops every possible component if it's launched"
@@ -190,6 +222,12 @@ MolGeoPosApplication >> stopGeoPosEquipement [
 	
 	"One component to stop."
 	component class stop
+]
+
+{ #category : #control }
+MolGeoPosApplication >> unpauseMapComponent [
+
+	self getMapComponent componentActivate
 ]
 
 { #category : #private }
