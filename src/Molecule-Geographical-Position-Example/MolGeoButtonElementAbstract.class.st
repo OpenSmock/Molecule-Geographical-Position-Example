@@ -257,7 +257,7 @@ MolGeoButtonElementAbstract >> defaultFontSize [
 	^ 16
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementAbstract >> hoverColor [
 
 	^ self shouldBeImplemented
@@ -322,13 +322,13 @@ MolGeoButtonElementAbstract >> makeNewLabelElement: aString [
 	^ rope asElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementAbstract >> primaryColor [
 
 	^ self shouldBeImplemented
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - colors' }
 MolGeoButtonElementAbstract >> secondaryColor [
 
 	^ self shouldBeImplemented
