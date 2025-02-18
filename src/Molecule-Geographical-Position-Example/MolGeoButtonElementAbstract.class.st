@@ -1,22 +1,24 @@
 Class {
-	#name : #MolGeoButtonElementAbstract,
-	#superclass : #BlElement,
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#name : 'MolGeoButtonElementAbstract',
+	#superclass : 'BlElement',
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementAbstract class >> example [
 
 	"See subclasses"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MolGeoButtonElementAbstract class >> isAbstract [
 
 	^ self == MolGeoButtonElementAbstract
 ]
 
-{ #category : #'pyramid-serialized-bloc' }
+{ #category : 'pyramid-serialized-bloc' }
 MolGeoButtonElementAbstract class >> pystonSpec [
 	"This class has been generated using Pyramid.
 
@@ -238,7 +240,7 @@ MolGeoButtonElementAbstract class >> pystonSpec [
 ]'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoButtonElementAbstract >> buildElements [
 
 	self hasChildren ifTrue: [ self removeChildren ].
@@ -251,19 +253,19 @@ MolGeoButtonElementAbstract >> buildElements [
 		(BlLinearLayout vertical alignCenter)
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 MolGeoButtonElementAbstract >> defaultFontSize [
 
 	^ 16
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementAbstract >> hoverColor [
 
 	^ self shouldBeImplemented
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoButtonElementAbstract >> icon: aForm [
 
 	| background iconElement |
@@ -277,20 +279,20 @@ MolGeoButtonElementAbstract >> icon: aForm [
 		c horizontal exact: aForm extent y + iconElement margin width ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoButtonElementAbstract >> initialize [
 
 	super initialize.
 	self buildElements.
 	self
-		when: BlMouseOverEvent
+		addEventHandlerOn: BlMouseOverEvent
 		do: [ :evt |
 		(self childWithId: #background) background: self hoverColor ].
-	self when: BlMouseOutEvent do: [ :evt |
+	self addEventHandlerOn: BlMouseOutEvent do: [ :evt |
 		(self childWithId: #background) background: self secondaryColor ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoButtonElementAbstract >> label: aString [
 
 	| newLabel |
@@ -305,13 +307,13 @@ MolGeoButtonElementAbstract >> label: aString [
 	self replaceChild: (self childWithId: #label) with: newLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoButtonElementAbstract >> makeNewIconElement: aForm [
 
 	^ (aForm collectColors: [ :c | c isTransparent ifTrue: [ c ] ifFalse: [ self primaryColor ] ]) asElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoButtonElementAbstract >> makeNewLabelElement: aString [
 
 	| rope |
@@ -322,13 +324,13 @@ MolGeoButtonElementAbstract >> makeNewLabelElement: aString [
 	^ rope asElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementAbstract >> primaryColor [
 
 	^ self shouldBeImplemented
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementAbstract >> secondaryColor [
 
 	^ self shouldBeImplemented

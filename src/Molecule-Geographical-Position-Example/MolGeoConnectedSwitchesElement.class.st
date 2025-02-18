@@ -1,13 +1,15 @@
 Class {
-	#name : #MolGeoConnectedSwitchesElement,
-	#superclass : #BlElement,
+	#name : 'MolGeoConnectedSwitchesElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'switches'
 	],
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoConnectedSwitchesElement class >> example [
 
 	| help pharoBig |
@@ -20,13 +22,13 @@ MolGeoConnectedSwitchesElement class >> example [
 		openInNewSpace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoConnectedSwitchesElement >> deactivateAllSwitchesExcept: aMolGeoSwitchElement [
 
 	self switches do: [ :each | aMolGeoSwitchElement = each ifFalse: [ each state: false ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoConnectedSwitchesElement >> initialize [
 
 	super initialize.
@@ -39,20 +41,20 @@ MolGeoConnectedSwitchesElement >> initialize [
 		c horizontal fitContent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoConnectedSwitchesElement >> switches [
 
 	^ switches
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoConnectedSwitchesElement >> switches: anObject [
 
 	switches := anObject.
 	self addChildren: anObject.
 	switches ifEmpty: [ ^ self ].
 	switches do: [ :each |
-		each when: BlPrimaryClickEvent do: [ :evt |
+		each addEventHandlerOn: BlPrimaryClickEvent do: [ :evt |
 			self deactivateAllSwitchesExcept: each.
 			each state: true. ] ] .
 	switches first state: true

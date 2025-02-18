@@ -1,17 +1,19 @@
 Class {
-	#name : #MolGeoPosHelper,
-	#superclass : #AbstractTutorial,
-	#category : #'Molecule-Geographical-Position-Example-Tutorial'
+	#name : 'MolGeoPosHelper',
+	#superclass : 'AbstractTutorial',
+	#category : 'Molecule-Geographical-Position-Example-Tutorial',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Tutorial'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MolGeoPosHelper class >> openAsUnclosableWindow [
 	<script>
 	
 	(ProfStef goOn: self) window makeUnclosable
 ]
 
-{ #category : #lessons }
+{ #category : 'lessons' }
 MolGeoPosHelper >> openTheExample [
 
 	^ Lesson
@@ -49,7 +51,7 @@ MolWiFi.
 '
 ]
 
-{ #category : #tutorial }
+{ #category : 'tutorial' }
 MolGeoPosHelper >> tutorial [
 
 	^ #( #openTheExample )

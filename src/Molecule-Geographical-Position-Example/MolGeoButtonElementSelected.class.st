@@ -1,10 +1,12 @@
 Class {
-	#name : #MolGeoButtonElementSelected,
-	#superclass : #MolGeoButtonElementAbstract,
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#name : 'MolGeoButtonElementSelected',
+	#superclass : 'MolGeoButtonElementAbstract',
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementSelected class >> example [
 
 	self new
@@ -13,13 +15,13 @@ MolGeoButtonElementSelected class >> example [
 		openInNewSpace
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementSelected >> hoverColor [
 
 	^ Color fromHexString: '#78A7D6'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoButtonElementSelected >> makeNewLabelElement: aString [
 
 	| rope |
@@ -31,13 +33,13 @@ MolGeoButtonElementSelected >> makeNewLabelElement: aString [
 	^ rope asElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementSelected >> primaryColor [
 
 	^ Color fromHexString: '#0D3151'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementSelected >> secondaryColor [
 
 	^ Color fromHexString: '#8DBEF1'

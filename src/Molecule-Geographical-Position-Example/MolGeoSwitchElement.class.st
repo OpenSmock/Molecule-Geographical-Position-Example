@@ -1,6 +1,6 @@
 Class {
-	#name : #MolGeoSwitchElement,
-	#superclass : #BlElement,
+	#name : 'MolGeoSwitchElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'selectedElement',
 		'notSelectedElement',
@@ -8,16 +8,18 @@ Class {
 		'whenActivatedDo',
 		'whenDesactivatedDo'
 	],
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 MolGeoSwitchElement class >> example [
 
 	self examplePharoBig openInNewSpace
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoSwitchElement class >> exampleHelp [
 
 	^ self new
@@ -30,7 +32,7 @@ MolGeoSwitchElement class >> exampleHelp [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoSwitchElement class >> examplePharoBig [
 
 	^ self new
@@ -43,7 +45,7 @@ MolGeoSwitchElement class >> examplePharoBig [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> icon: aForm [
 
 	self notSelectedElement icon: (aForm copy: aForm boundingBox).
@@ -53,7 +55,7 @@ MolGeoSwitchElement >> icon: aForm [
 	self size: self selectedElement size
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoSwitchElement >> initialize [
 
 	super initialize.
@@ -62,12 +64,12 @@ MolGeoSwitchElement >> initialize [
 	whenActivatedDo := [  ].
 	notSelectedElement := MolGeoButtonElementNotSelected new
 		                      id: #notSelected;
-		                      when: BlPrimaryClickEvent
+		                      addEventHandlerOn: BlPrimaryClickEvent
 		                      do: [ :evt | self state: true ];
 		                      yourself.
 	selectedElement := MolGeoButtonElementSelected new
 		                   id: #selected;
-		                   when: BlPrimaryClickEvent
+		                   addEventHandlerOn: BlPrimaryClickEvent
 		                   do: [ :evt | self state: false ];
 		                   visibility: BlVisibility gone;
 		                   yourself.
@@ -77,32 +79,32 @@ MolGeoSwitchElement >> initialize [
 	self clipChildren: false.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> label: aString [
 
 	self notSelectedElement label: aString.
 	self selectedElement label: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> notSelectedElement [
 
 	^ notSelectedElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> selectedElement [
 
 	^ selectedElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> state [
 
 	^ state
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> state: anObject [
 
 	state = anObject ifTrue: [ ^ self ].
@@ -118,25 +120,25 @@ MolGeoSwitchElement >> state: anObject [
 			self whenDesactivatedDo value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> whenActivatedDo [
 
 	^ whenActivatedDo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> whenActivatedDo: aBlock [
 
 	whenActivatedDo := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> whenDesactivatedDo [
 
 	^ whenDesactivatedDo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoSwitchElement >> whenDesactivatedDo: aBlock [
 
 	whenDesactivatedDo := aBlock

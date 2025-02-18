@@ -1,13 +1,15 @@
 Class {
-	#name : #MolGeoPosExampleResource,
-	#superclass : #Object,
+	#name : 'MolGeoPosExampleResource',
+	#superclass : 'Object',
 	#instVars : [
 		'fileName'
 	],
-	#category : #'Molecule-Geographical-Position-Example-Resources'
+	#category : 'Molecule-Geographical-Position-Example-Resources',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Resources'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> galileo [
 
 	^ self new
@@ -15,7 +17,7 @@ MolGeoPosExampleResource class >> galileo [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> gps [
 
 	^ self new
@@ -23,7 +25,7 @@ MolGeoPosExampleResource class >> gps [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> gpsInacurrate [
 
 	^ self new
@@ -31,7 +33,7 @@ MolGeoPosExampleResource class >> gpsInacurrate [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> gsm [
 
 	^ self new
@@ -39,7 +41,7 @@ MolGeoPosExampleResource class >> gsm [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> map [
 
 	^ self new
@@ -47,7 +49,7 @@ MolGeoPosExampleResource class >> map [
 		  yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosExampleResource class >> wiFi [
 
 	^ self new
@@ -55,7 +57,7 @@ MolGeoPosExampleResource class >> wiFi [
 		  yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MolGeoPosExampleResource >> asForm [
 
 	^ (Form fromFileNamed: self fileReference)
@@ -63,13 +65,13 @@ MolGeoPosExampleResource >> asForm [
 		  to: Color transparent
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MolGeoPosExampleResource >> asForm: anExtent [
 
 	^ self asForm scaledToSize: anExtent
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 MolGeoPosExampleResource >> baseIcebergDirectory [
 
 	| expectedName myRepository |
@@ -86,31 +88,31 @@ myRepository := IceRepository registry
 ^ myRepository location
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 MolGeoPosExampleResource >> baseRessourceDirectory [
 
 	^ self baseIcebergDirectory / 'ressources'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoPosExampleResource >> fileName [
 
 	^ fileName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoPosExampleResource >> fileName: aString [
 
 	fileName := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MolGeoPosExampleResource >> fileReference [
 
 	^ self baseRessourceDirectory / self fileName
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoPosExampleResource >> initialize [
 
 	super initialize.
@@ -118,7 +120,7 @@ MolGeoPosExampleResource >> initialize [
 	fileName := 'doesnotexist.png'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MolGeoPosExampleResource >> isDownloaded [
 
 	^ self fileReference exists
