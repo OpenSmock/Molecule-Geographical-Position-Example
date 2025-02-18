@@ -1,10 +1,12 @@
 Class {
-	#name : #MolGeoButtonElementNotSelected,
-	#superclass : #MolGeoButtonElementAbstract,
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#name : 'MolGeoButtonElementNotSelected',
+	#superclass : 'MolGeoButtonElementAbstract',
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementNotSelected class >> example [
 
 	self new
@@ -13,19 +15,19 @@ MolGeoButtonElementNotSelected class >> example [
 		openInNewSpace
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementNotSelected >> hoverColor [
 
 	^ Color fromHexString: '#bebdbf'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementNotSelected >> primaryColor [
 
 	^ Color fromHexString: '#6c757d'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoButtonElementNotSelected >> secondaryColor [
 
 	^ Color transparent

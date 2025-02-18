@@ -1,1 +1,1 @@
-Package { #name : #'Molecule-Geographical-Position-Example' }
+Package { #name : 'Molecule-Geographical-Position-Example' }

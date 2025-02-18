@@ -1,14 +1,16 @@
 Class {
-	#name : #MolGeoPosApplication,
-	#superclass : #BlElement,
+	#name : 'MolGeoPosApplication',
+	#superclass : 'BlElement',
 	#instVars : [
 		'map',
 		'menu'
 	],
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MolGeoPosApplication class >> close [
 	<script>
 
@@ -20,7 +22,7 @@ MolGeoPosApplication class >> close [
 	MolComponentManager cleanUp.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MolGeoPosApplication class >> open [
 	<script>
 
@@ -30,13 +32,13 @@ MolGeoPosApplication class >> open [
 	^ self new openApplication
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> iconSize [
 
 	^ 28 @ 28
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoPosApplication >> initialize [
 
 	super initialize.
@@ -49,7 +51,7 @@ MolGeoPosApplication >> initialize [
 		c horizontal fitContent ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeAndStartMapComponent [
 
 	| mapElement |
@@ -59,7 +61,7 @@ MolGeoPosApplication >> makeAndStartMapComponent [
 	^ mapElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeComponentsSelectionMenu [
 
 	| galileo gps gpsInacurate gsm wifi |
@@ -78,7 +80,7 @@ MolGeoPosApplication >> makeComponentsSelectionMenu [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeGPSButton [
 
 	^ MolGeoSwitchElement new
@@ -90,7 +92,7 @@ MolGeoPosApplication >> makeGPSButton [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeGPSInaccurateButton [
 
 	^ MolGeoSwitchElement new
@@ -102,7 +104,7 @@ MolGeoPosApplication >> makeGPSInaccurateButton [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeGSMButton [
 
 	^ MolGeoSwitchElement new
@@ -114,7 +116,7 @@ MolGeoPosApplication >> makeGSMButton [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeGalileoButton [
 
 	^ MolGeoSwitchElement new
@@ -126,7 +128,7 @@ MolGeoPosApplication >> makeGalileoButton [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> makeWiFiButton [
 
 	^ MolGeoSwitchElement new
@@ -138,19 +140,19 @@ MolGeoPosApplication >> makeWiFiButton [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> mapForm [
 
 	^ MolGeoPosExampleResource map asForm: self maximumMapSize
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> maximumMapSize [
 
 	^ 500 @ 300
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> openApplication [
  
 	| space |
@@ -161,7 +163,7 @@ MolGeoPosApplication >> openApplication [
 	space root addChild: self.
 
 	space
-		when: BlSpaceClosedEvent
+		addEventHandlerOn: BlSpaceClosedEvent
 		do: [ :evt | MolComponentManager cleanUp ].
 
 	space enqueueTask: (BlTaskAction new
@@ -174,7 +176,7 @@ MolGeoPosApplication >> openApplication [
 	space show  
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> stopGeoPosEquipement [
 	"stops every possible component if it's launched"
 
@@ -192,7 +194,7 @@ MolGeoPosApplication >> stopGeoPosEquipement [
 	component class stop
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MolGeoPosApplication >> windowSize [
 
 	^ 500 @ 400

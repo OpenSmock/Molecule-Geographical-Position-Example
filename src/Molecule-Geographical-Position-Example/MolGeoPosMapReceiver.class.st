@@ -1,6 +1,6 @@
 Class {
-	#name : #MolGeoPosMapReceiver,
-	#superclass : #BlElement,
+	#name : 'MolGeoPosMapReceiver',
+	#superclass : 'BlElement',
 	#traits : 'MolGeoPosReceiverType + MolGeoPosEquipmentEvents + MolComponentImpl',
 	#classTraits : 'MolGeoPosReceiverType classTrait + MolGeoPosEquipmentEvents classTrait + MolComponentImpl classTrait',
 	#instVars : [
@@ -8,10 +8,12 @@ Class {
 		'pointerH',
 		'pointer'
 	],
-	#category : #'Molecule-Geographical-Position-Example-Application'
+	#category : 'Molecule-Geographical-Position-Example-Application',
+	#package : 'Molecule-Geographical-Position-Example',
+	#tag : 'Application'
 }
 
-{ #category : #'pyramid-serialized-bloc' }
+{ #category : 'pyramid-serialized-bloc' }
 MolGeoPosMapReceiver class >> pystonSpec [
 	"This class has been generated using Pyramid.
 
@@ -353,7 +355,7 @@ MolGeoPosMapReceiver class >> pystonSpec [
 ]'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MolGeoPosMapReceiver >> backgroundForm: aForm [
 
 (self childWithId: #map) background: aForm.
@@ -361,26 +363,26 @@ MolGeoPosMapReceiver >> backgroundForm: aForm [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MolGeoPosMapReceiver >> buildElements [
 
 	self hasChildren ifTrue: [ self removeChildren ].
 	self addChildren: self class pystonSpec materializeAsBlElement
 ]
 
-{ #category : #'life cycle' }
+{ #category : 'life cycle' }
 MolGeoPosMapReceiver >> componentActivate [
 
 	self getMolGeoPosEquipmentEventsSubscriber subscribe: self
 ]
 
-{ #category : #'life cycle' }
+{ #category : 'life cycle' }
 MolGeoPosMapReceiver >> componentPassivate [
 
 	self getMolGeoPosEquipmentEventsSubscriber unsubscribe: self
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 MolGeoPosMapReceiver >> currentPositionChanged: aGeoPosition [
 
 	| adjustedPosition radius |
@@ -394,7 +396,7 @@ MolGeoPosMapReceiver >> currentPositionChanged: aGeoPosition [
 	pointer size: radius
 ]
 
-{ #category : #'component accessing' }
+{ #category : 'component accessing' }
 MolGeoPosMapReceiver >> getMolGeoPosEquipmentEventsSubscriber [
 	| eventsSymbol eventsSubscriber itf |
 	itf := MolGeoPosEquipmentEvents.
@@ -406,7 +408,7 @@ MolGeoPosMapReceiver >> getMolGeoPosEquipmentEventsSubscriber [
 	^eventsSubscriber
 ]
 
-{ #category : #'component accessing' }
+{ #category : 'component accessing' }
 MolGeoPosMapReceiver >> getMolGeoPosEquipmentServicesProvider [
 	| servicesSymbol servicesProvider itf |
 
@@ -418,7 +420,7 @@ MolGeoPosMapReceiver >> getMolGeoPosEquipmentServicesProvider [
 	^servicesProvider
 ]
 
-{ #category : #'life cycle' }
+{ #category : 'life cycle' }
 MolGeoPosMapReceiver >> initialize [
 
 	super initialize.
